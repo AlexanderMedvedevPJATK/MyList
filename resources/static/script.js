@@ -26,14 +26,15 @@ add.addEventListener("click", function () {
         const listItem = document.createElement("li");
         const checkbox = document.createElement("div");
         const itemText = document.createElement("p");
+        const removeButton = document.createElement("img");
+        removeButton.src = "cross.svg";
         checkbox.className = "custom-checkbox";
-        addCheckboxAction(checkbox);
-        if (itemText.textContent != null) {
-            listItem.append(checkbox);
-            listItem.append(itemText);
-            list.append(listItem);
-            console.log(itemText.textContent)
-        }
+        itemText.textContent = tmp;
+        addCheckboxAndRemoveAction(checkbox, removeButton);
+        listItem.append(checkbox);
+        listItem.append(itemText);
+        listItem.append(removeButton);
+        list.append(listItem);
     }
 });
 
