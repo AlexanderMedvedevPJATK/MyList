@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <title>damn it</title>
     <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="list-container">
     <h1>Groceries</h1>
-    <button id="add">Add Element</button>
+    <button id="add">New Element</button>
     <ul id="list">
-        <li><div class="custom-checkbox"></div><p>Мясо</p></li>
-        <li><div class="custom-checkbox"></div><p>Молоко</p></li>
-        <li><div class="custom-checkbox"></div><p>Сыр</p></li>
+        <li><div class="custom-checkbox"></div><p>Мясо</p><img src="/cross.svg" alt="cross" class="remove"></li>
+        <li><div class="custom-checkbox"></div><p>Молоко</p><img src="/cross.svg" alt="cross" class="remove"></li>
+        <li><div class="custom-checkbox"></div><p>Сыр</p><img src="/cross.svg" alt="cross" class="remove"></li>
     </ul>
-    <input type="checkbox">123
 </div>
 
 <script src="/script.js"></script>
