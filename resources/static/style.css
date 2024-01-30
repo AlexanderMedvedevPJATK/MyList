@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#list {
+    list-style-type: none;
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+#list li {
+    display: flex;
+    vertical-align: center;
+    margin: 7px 0;
+}
+
+#list p {
+    margin-left: 5px;
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 4px solid black;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.custom-checkbox.active {
+    background-color: blue;
+}
+
+.custom-checkbox:hover {
+    background-color: #cbc7c7;
+}
+
+.custom-checkbox.active:hover {
+    background-color: #cb4a4a;
+}
+
+#add {
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px;
+}
