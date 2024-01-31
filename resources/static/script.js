@@ -1,3 +1,8 @@
+const checkboxes = document.getElementsByClassName("custom-checkbox");
+const removeButtons = document.getElementsByClassName("remove");
+const editButtons = document.getElementsByClassName("edit");
+let currentlyEdited;
+let editButton;
 function addButtonsEventListeners(checkbox, remove, edit) {
     const paragraph = edit.previousElementSibling;
     let initialText;
@@ -16,6 +21,9 @@ function addButtonsEventListeners(checkbox, remove, edit) {
     })
     edit.addEventListener("click", function () {
         if (!edit.previousElementSibling.isContentEditable) {
+            currentlyEdited = paragraph;
+            editButton = edit;
+
             initialText = paragraph.textContent;
             paragraph.contentEditable = "true";
             edit.src = "check2.svg";
@@ -34,11 +42,8 @@ function addButtonsEventListeners(checkbox, remove, edit) {
             edit.src = "edit.svg";
         }
     })
-}
 
-const checkboxes = document.getElementsByClassName("custom-checkbox");
-const removeButtons = document.getElementsByClassName("remove");
-const editButtons = document.getElementsByClassName("edit");
+}
 
 for (let i = 0; i < checkboxes.length; i++) {
     let checkbox = checkboxes[i];
@@ -47,9 +52,9 @@ for (let i = 0; i < checkboxes.length; i++) {
     addButtonsEventListeners(checkbox, removeButton, editButton);
 }
 
+// creating a list item
 const list = document.getElementById("list");
 const add = document.getElementById("add");
-const listItem = document.createElement("li");
 
 add.addEventListener("click", function () {
     const listItem = document.createElement("li");
@@ -57,22 +62,41 @@ add.addEventListener("click", function () {
     const itemText = document.createElement("p");
     const removeButton = document.createElement("img");
     const editButton = document.createElement("img");
+
     removeButton.src = "cross.svg";
     removeButton.className = "remove";
+
     editButton.src = "check2.svg";
     editButton.className = "edit";
+
     checkbox.className = "custom-checkbox";
+
     itemText.contentEditable = "true";
     itemText.textContent = "";
+
     listItem.append(checkbox);
     listItem.append(itemText);
     listItem.append(editButton);
     listItem.append(removeButton);
+
     list.append(listItem);
     itemText.focus();
+
     addButtonsEventListeners(checkbox, removeButton, editButton);
 });
 
-function askItemName() {
 
-}
+// stop editing when clicking outside the element or pressing enter
+document.addEventListener("click", function (event) {
+    if (!currentlyEdited.contains(event.target) && !editButton.contains(event.target)) {
+        currentlyEdited.removeAttribute("contenteditable");
+        editButton.src = "edit.svg";
+    }
+})
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        currentlyEdited.removeAttribute("contenteditable");
+        editButton.src = "edit.svg";
+    }
+})
